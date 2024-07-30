@@ -701,6 +701,9 @@
     .form-item {
         position: relative;
     }
+    .form-item > .form-input {
+        width: 100%;
+    }
     .name-input {
         width: 100%;
     }
@@ -2725,11 +2728,6 @@
     }
     
     
-    
-    
-    
-    
-    
     /* price */
     
     
@@ -2832,8 +2830,9 @@
                 align-items: center;
         border-radius: 7px;
         background: var(--surface-layertranslucent);
-        width: 36px;
-        height: 36px;
+        min-width: 34px;
+        width: 34px;
+        height: 34px;
     }
     .price__more {
         position: relative;
@@ -2920,7 +2919,7 @@
             -webkit-box-direction: normal;
                 -ms-flex-direction: column;
                     flex-direction: column;
-            gap: 12px;
+            gap: 8px;
             border: 1px solid #ebecf0;
             border-radius: 10px;
             margin-bottom: 8px;
@@ -3713,6 +3712,10 @@
                 align-items: center;
         margin-bottom: 40px;
     }
+
+    .comments__title {
+        margin-bottom: 0;
+    }
     
     .comments__btns {
         display: -webkit-box;
@@ -3927,6 +3930,10 @@
     .stocks__swiper-slide {
         height: auto;
     }
+
+    .stocks__title {
+        margin-bottom: 0;
+    }
     
     .stocks__card {
         border: 1px solid #e3eaf7;
@@ -4000,6 +4007,9 @@
         }
         .stocks__card_bg {
             max-height: 50%;
+        }
+        .stocks__btns {
+            display: none;
         }
     }
     
