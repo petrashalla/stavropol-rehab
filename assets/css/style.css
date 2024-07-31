@@ -3249,6 +3249,7 @@
     }
     
     .doctor__schedule_time {
+        text-align: right;
         font-weight: 600;
         color: #08133b;
     }
@@ -3342,7 +3343,7 @@
     
     
     /*  media doctors  */
-    @media (max-width: 1000px) {
+    @media (max-width: 1010px) {
         .doctor {
             padding-bottom: 35px;
         }    
