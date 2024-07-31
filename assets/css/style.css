@@ -632,6 +632,10 @@
         line-height: 120%;
         color: #08133b;
     }
+
+    a {
+        cursor: url('../img/icons/cursor-hand.svg'), auto;
+    }
     
     
     /* form */
@@ -2749,6 +2753,9 @@
         color: rgba(30, 49, 119, 0.7);
         background: rgba(236, 240, 247, 0.3);
     }
+    .price__row-title p:first-child {
+        flex: 1 0 15%;
+    }
     .price__content {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -3289,6 +3296,7 @@
     }
     
     .doctor__education_university {
+        font-family: var(--second-family);
         font-size: 16px;
         line-height: 150%;
         color: #1d1d1d;
@@ -4495,14 +4503,16 @@
         outline: #fff 1px solid;
     }
     
-    
+    .article__navigation_list li {
+        margin-bottom: 10px;
+    }
     .article__navigation_list li a {
         display: block;
         font-weight: 600;
         color: #08133b;
         position: relative;
         padding-left: 18px;
-        margin-bottom: 12px;
+        margin-bottom: 6px;
         -webkit-transition: all 0.3s ease;
         -o-transition: all 0.3s ease;
         transition: all 0.3s ease;
@@ -4520,6 +4530,27 @@
         position: absolute;
         top: 6px;
         left: 0;
+    }
+    .article__subnavigation_list {
+        padding-left: 30px;
+    }
+    .article__subnavigation_list li {
+        margin-bottom: 0;
+    }
+    .article__subnavigation_list li a {
+        font-family: var(--second-family);
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
+        color: rgba(30, 49, 119, 0.7);
+        margin-bottom: 0;
+        padding: 4px 0;
+        padding-left: 14px;
+    }
+    .article__subnavigation_list li a::before {
+        width: 4px;
+        height: 4px;
+        top: 10px;
     }
     
     /*  media article  */
@@ -4773,6 +4804,7 @@
         -webkit-box-pack: justify;
             -ms-flex-pack: justify;
                 justify-content: space-between;
+        font-family: var(--second-family);
         font-size: 14px;
         line-height: 150%;
         color: rgba(29, 29, 29, 0.45);
@@ -5437,6 +5469,7 @@
     .other-services__link {
         display: block;
         height: 100%;
+        font-family: var(--second-family);
         font-weight: 500;
         line-height: 120%;
         color: #08133b;

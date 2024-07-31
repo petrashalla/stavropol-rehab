@@ -450,9 +450,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-	// navigation
-	const articleNavigation = document.querySelector('.navigation')
-	if (articleNavigation) {
+	/* navigation  */
+	// service Navigation
+	const serviceNavigation = document.querySelector('.navigation')
+	if (serviceNavigation) {
 		const jsScrollBlockList = document.querySelectorAll(
 			'.text__content h1, .text__content h2, .text__content h3'
 		)
@@ -461,18 +462,18 @@ document.addEventListener('DOMContentLoaded', function () {
 			for (let i = 0; i < jsScrollBlockList.length; i += 1) {
 				const jsScrollBlock = jsScrollBlockList[i]
 				const titleBlock = jsScrollBlock.textContent
-				const articleNavigationList = document.querySelector(
+				const serviceNavigationList = document.querySelector(
 					'.navigation__item ul'
 				)
-				const articleNavigationItem = document.createElement('li')
-				const articleNavigationLink = document.createElement('a')
-				articleNavigationItem.classList.add('navigation__list-item')
-				articleNavigationLink.classList.add('navigation__link')
+				const serviceNavigationItem = document.createElement('li')
+				const serviceNavigationLink = document.createElement('a')
+				serviceNavigationItem.classList.add('navigation__list-item')
+				serviceNavigationLink.classList.add('navigation__link')
 				jsScrollBlock.setAttribute('id', `${i}`)
-				articleNavigationLink.setAttribute('href', `$${i}`)
-				articleNavigationLink.textContent = ' ' + titleBlock
-				articleNavigationItem.append(articleNavigationLink)
-				articleNavigationList.append(articleNavigationItem)
+				serviceNavigationLink.setAttribute('href', `$${i}`)
+				serviceNavigationLink.textContent = ' ' + titleBlock
+				serviceNavigationItem.append(serviceNavigationLink)
+				serviceNavigationList.append(serviceNavigationItem)
 			}
 			document.querySelectorAll('a[href^="$"').forEach(link => {
 				link.addEventListener('click', function (e) {
@@ -489,10 +490,66 @@ document.addEventListener('DOMContentLoaded', function () {
 				})
 			})
 		} else {
-			articleNavigation.querySelector('.navigation__item').remove()
+			serviceNavigation.querySelector('.navigation__item').remove()
 		}
 	}
-	// end navigation
+
+	//article navigation
+	const articleNavigation = document.querySelector('.article__navigation');
+	if (articleNavigation) {
+    const jsScrollBlockList = document.querySelectorAll(
+        '.text__content h1, .text__content h2, .text__content h3'
+    );
+
+    if (jsScrollBlockList.length > 0) {
+        let currentH2List = null;
+        for (let i = 0; i < jsScrollBlockList.length; i += 1) {
+            const jsScrollBlock = jsScrollBlockList[i];
+            const titleBlock = jsScrollBlock.textContent;
+            const articleNavigationList = document.querySelector('.article__navigation_item ul');
+            const articleNavigationItem = document.createElement('li');
+            const articleNavigationLink = document.createElement('a');
+            articleNavigationItem.classList.add('navigation__list-item');
+            articleNavigationLink.classList.add('navigation__link');
+            jsScrollBlock.setAttribute('id', `${i}`);
+            articleNavigationLink.setAttribute('href', `#${i}`);
+            articleNavigationLink.textContent = ' ' + titleBlock;
+            articleNavigationItem.append(articleNavigationLink);
+
+            if (jsScrollBlock.tagName === 'H2') {
+                currentH2List = document.createElement('ul');
+				currentH2List.classList.add('article__subnavigation_list');  
+                articleNavigationItem.append(currentH2List);
+                articleNavigationList.append(articleNavigationItem);
+            } else if (jsScrollBlock.tagName === 'H3' && currentH2List) {
+                const subListItem = document.createElement('li');
+                subListItem.classList.add('navigation__sublist-item');
+                subListItem.append(articleNavigationLink);
+                currentH2List.append(subListItem);
+            } else {
+                articleNavigationList.append(articleNavigationItem);
+            }
+        }
+        
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                let href = this.getAttribute('href').substring(1);
+                const scrollTarget = document.getElementById(href);
+                const topOffset = 280;
+                const elementPosition = scrollTarget.getBoundingClientRect().top;
+                const offsetPosition = elementPosition - topOffset;
+                window.scrollBy({
+                    top: offsetPosition,
+                    behavior: 'smooth',
+                });
+            });
+        });
+    } else {
+        articleNavigation.querySelector('.navigation__item').remove();
+    }
+}
+	/* end navigation  */
 
 
 
