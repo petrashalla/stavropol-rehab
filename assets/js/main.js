@@ -673,7 +673,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 	/*  show/hide other services */
-    const btn = document.querySelector('.other-services__btn');
+    const otherServicesBtn = document.querySelector('.other-services__btn');
     const extraItems = document.querySelectorAll('.other-services__list .extra');
 
     function handleButtonClick() {
@@ -682,11 +682,11 @@ document.addEventListener('DOMContentLoaded', function () {
         extraItems.forEach(item => {
             item.style.display = isVisible ? 'none' : 'block';
         });
-        btn.querySelector('span').textContent = isVisible ? 'Весь список' : 'Скрыть';
+        otherServicesBtn.querySelector('span').textContent = isVisible ? 'Весь список' : 'Скрыть';
         if (!isVisible) {
-            btn.classList.add('active');
+            otherServicesBtn.classList.add('active');
         } else {
-            btn.classList.remove('active');
+            otherServicesBtn.classList.remove('active');
         }
     }
 
@@ -696,17 +696,19 @@ document.addEventListener('DOMContentLoaded', function () {
             extraItems.forEach(item => {
                 item.style.display = 'none';
             });
-            btn.querySelector('span').textContent = 'Весь список';
-            btn.classList.remove('active');
-            btn.style.display = 'block';
+            otherServicesBtn.querySelector('span').textContent = 'Весь список';
+            otherServicesBtn.classList.remove('active');
+            otherServicesBtn.style.display = 'block';
         } else {
             extraItems.forEach(item => {
                 item.style.display = 'block';
             });
-            btn.style.display = 'none';
+            otherServicesBtn.style.display = 'none';
         }
     }
-    btn.addEventListener('click', handleButtonClick);
+	if (otherServicesBtn) {
+		otherServicesBtn.addEventListener('click', handleButtonClick);
+	}
     window.addEventListener('resize', updateView);
     updateView();
 	/*  end other services */
